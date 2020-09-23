@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style type="text/css">
+        th, td {
+            font-family: Arial, Helvetica, Verdana, sans-serif;
+
+        }
+    </style>
+</head>
+<body>
+
+<ul class="service">
+    {% for s in service1 %}
+        <table border="1" cellspacing="0" cellpadding="0" font-family="ar" class="open_value">
+            <tr>
+                <td align="left" height="30" width="200" class="open_value">{{ s.title }}</td>
+                <td align="center" class="status" width="300">{{ s.status }}</td>
+            </tr>
+        </table>
+        <div class="value" style="display: none;">
+            {{ s.value }}
+        </div>
+    {% endfor %}
+
+    {% for s in service2 %}
+        <table border="1" cellspacing="0" cellpadding="0" font-family="ar" class="open_value">
+            <tr>
+                <td align="left" height="30" width="200" class="open_value">{{ s.title }}</td>
+                <td align="center" class="status" width="300">{{ s.status }}</td>
+            </tr>
+        </table>
+        <div class="value" style="display: none;">
+            {{ s.value }}
+        </div>
+    {% endfor %}
+
+    {% for s in service3 %}
+        <table border="1" cellspacing="0" cellpadding="0" font-family="ar" class="open_value">
+            <tr>
+                <td align="left" height="30" width="200" class="open_value">{{ s.title }}</td>
+                <td align="center" class="status" width="300">{{ s.status }}</td>
+            </tr>
+        </table>
+        <div class="value" style="display: none;">
+            {{ s.value }}
+        </div>
+    {% endfor %}
+
+
+</ul>
+
+    <script language="JavaScript" type="text/javascript">
+       let elems = document.getElementsByClassName('status');
+       for (let i = 0; i <elems.length; i++) {
+           if (elems[i].textContent === '1'){
+               elems[i].style.background = "#40de40";
+               elems[i].textContent = 'Работает стабильно';
+               elems[i].style.color = 'white';
+           } else if (elems[i].textContent === '2'){
+               elems[i].style.background = "#30b3e3";
+               elems[i].innerHTML = 'Работа завершена';
+               elems[i].style.color = 'white';
+           }else if (elems[i].textContent === '3'){
+               elems[i].style.background = "red";
+               elems[i].textContent = 'ОШИБКА!!!';
+               elems[i].style.color = 'white';
+           }
+
+       }
+
+       $('.service').on('click','.open_value', function (e) {
+           e.preventDefault();
+           $(this)
+               .next('.value')
+               .not(':animated')
+               .slideToggle();
+       });
+
+    </script>
+</body>
+</html>
+
+
+
+
